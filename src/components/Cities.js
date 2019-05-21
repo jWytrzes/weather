@@ -8,6 +8,10 @@ const StyledWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 45px 0;
+
+    ${({ theme }) => theme.mq.medium } {
+        flex-direction: row;
+    }
 `;
 
 const Cities = ({items}) => (

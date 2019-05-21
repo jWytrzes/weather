@@ -23,6 +23,10 @@ const GlobalStyle = createGlobalStyle`
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
+
+        ${({ theme }) => theme.mq.medium} {
+            justify-content: center;
+        }
     }
 `;
 

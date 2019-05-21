@@ -3,8 +3,18 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const StyledWrapper = styled.div`
-    max-width: 1200px;
     width: 100%;
+
+    ${({ theme }) => theme.mq.medium} {
+        max-width: 90%;
+        margin: 0 auto;
+        background: ${({ theme }) => theme.white};
+        box-shadow: ${({ theme }) => theme.shadow};
+    }
+
+    ${({ theme }) => theme.mq.big} {
+        max-width: 1200px;
+    }
 `;
 
 const StyledTopBar = styled.div`
@@ -51,7 +61,9 @@ const Layout = ({children}) => (
             <div> Weather<b>Forecast</b> </div>
             <StyledLink to="/options"> Ustawienia </StyledLink>
         </StyledTopBar>
-        {children}
+        <main>
+            {children} 
+        </main>
     </StyledWrapper>
 )
 

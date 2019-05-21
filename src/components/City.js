@@ -12,6 +12,10 @@ const StyledWrapper = styled.div`
     width: 250px; 
     margin: 10px auto;
     padding: 15px 20px;
+
+    ${({ theme }) => theme.mq.medium } {
+        margin: 10px 35px;
+    }
 `;
 
 const H2 = styled.h2`

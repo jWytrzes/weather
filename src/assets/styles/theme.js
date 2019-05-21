@@ -4,5 +4,10 @@ export const theme = {
     grey: '#f7f7f7',
     darkGrey: '#e1e1e1',
     primary: '#95D948',
-    secondary: '#B1E576'
+    secondary: '#B1E576',
+    shadow: `3px 3px 15px #e1e1e1`,
+    mq: {
+        medium: `@media(min-width: 992px)`,
+        big: `@media(min-width: 1250px)`,
+    }
 };
