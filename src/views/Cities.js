@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import City from './City';
+import City from '../components/City';
 
 const StyledWrapper = styled.div`
     display: flex;

@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../Layout';
 import Header from '../components/Header';
 import InputField from '../components/InputField';
-import Cities from '../components/Cities.js';
+import Cities from '../views/Cities.js';
 
 const Index = () => (
     <Layout>
