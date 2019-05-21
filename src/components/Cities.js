@@ -7,6 +7,7 @@ const StyledWrapper = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    padding: 45px 0;
 `;
 
 const Cities = ({items}) => (

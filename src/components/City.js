@@ -24,16 +24,22 @@ const StyledTemperature = styled.div`
     font-size: 36px;
     font-weight: 600;
     text-align: center;
+    margin: 30px auto;
+`;
+
+const StyledButtonsWrapper = styled.div`
+    display: flex;
+    justify-content: space-evenly;
 `;
 
 const City = ({city}) => (
     <StyledWrapper>
         <H2> {city.name} </H2>
         <StyledTemperature> {city.temp}°C </StyledTemperature>
-        <div>
+        <StyledButtonsWrapper>
             <Button dark> Usuń </Button>
-            <Button background> Szczegóły </Button>
-        </div> 
+            <Button primary> Szczegóły </Button>
+        </StyledButtonsWrapper> 
     </StyledWrapper>
 );
 
