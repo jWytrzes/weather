@@ -17,14 +17,17 @@ const StyledLabel = styled.label`
     cursor: pointer;
 `;
 
-const UnitOptions = () => (
+const Coordinates = () => (
     <StyledWrapper>
-        <H5> Jednostka </H5>
-        <div>
-            <StyledLabel> <input type="radio" name="units" value="C" defaultChecked/> °C </StyledLabel>
-            <StyledLabel> <input type="radio" name="units" value="F"/> °F </StyledLabel>
-        </div>
-    </StyledWrapper>	
+        <H5> Długość geograficzna </H5>
+        <p>
+           23.2345
+        </p>
+        <H5> Szerokość geograficzna </H5>
+        <p>
+            43.3365
+        </p>
+    </StyledWrapper>
 );
 
-export default UnitOptions;
+export default Coordinates;
