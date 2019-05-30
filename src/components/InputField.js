@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.form`
     max-width: 450px;
     width: 100%;
     display: flex;
@@ -26,11 +26,24 @@ const StyledInput = styled.input`
     }
 `;
 
-const InputField = () => (
-    <StyledWrapper>
-        <StyledInput type="text" placeholder="Dodaj miasto"/>
-        <Button> Dodaj </Button>
-    </StyledWrapper>
-);
+const InputField = ({onSubmit}) => {
+    const [inputVal, setInputVal] = useState('');
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        onSubmit(inputVal);
+    }
+
+    return (
+        <StyledWrapper id="searchInput" onSubmit={handleSubmit} >
+            <StyledInput 
+                type="text" 
+                placeholder="Dodaj miasto" 
+                value={inputVal}
+                onChange={e => setInputVal(e.target.value)}/>
+            <Button type="submit" form="searchInput"> Dodaj </Button>
+        </StyledWrapper>
+    );
+}
 
 export default InputField;
