@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Button from './Button';
 
@@ -36,15 +37,29 @@ const StyledButtonsWrapper = styled.div`
     justify-content: space-evenly;
 `;
 
-const City = ({city}) => (
-    <StyledWrapper>
-        <H2> {city.name} </H2>
-        <StyledTemperature> {city.temperature.toFixed(0)} K </StyledTemperature>
-        <StyledButtonsWrapper>
-            <Button dark> Usuń </Button>
-            <Button primary> Szczegóły </Button>
-        </StyledButtonsWrapper> 
-    </StyledWrapper>
-);
+const City = ( props ) => {
+    console.log(props.celsiusDegrees);
+    let temperature = props.celsiusDegrees ? 
+    <span>{ (props.city.temperature - 273.15).toFixed(0)}°C</span> : 
+    <span> {props.city.temperature.toFixed(0)}K </span>;
 
-export default City;
+    return (
+        <StyledWrapper>
+            <H2> {props.city.name} </H2>
+            <StyledTemperature> {temperature} </StyledTemperature>
+            <StyledButtonsWrapper>
+                <Button dark> Usuń </Button>
+                <Button primary> Szczegóły </Button>
+            </StyledButtonsWrapper>
+        </StyledWrapper>
+    );
+}
+
+function mapStateToProps(state) {
+    console.log(state.celsiusDegrees);
+    return {
+        celsiusDegrees: state.celsiusDegrees
+    };
+}
+
+export default connect(mapStateToProps)(City);

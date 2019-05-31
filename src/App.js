@@ -1,30 +1,46 @@
 import React from 'react';
-//import { createStore } from 'redux';
-import Routes from './Routes';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import GlobalStyle from './assets/styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './assets/styles/theme';
+import { Switch, Route } from 'react-router-dom';
+import Index from './pages/Index';
+import Options from './pages/Options';
+import Details from './pages/Details';
 
-/* const initialState = {
-    citiesList: [],
+const initialState = {
     celsiusDegrees: true,
 };
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'CHANGE'
+        case 'CHANGE_UNIT':
+            return {
+                celsiusDegrees: !state.celsiusDegrees
+            };
+        default:
+            return state;
     }
 }
 
-const store = createStore(reducer); */
+const store = createStore(reducer); 
 
 const App = () => ( 
-    <ThemeProvider theme={theme}>
-        <>
-            <GlobalStyle />
-            <Routes />
-        </>
-    </ThemeProvider>
+    <Provider store={ store }>
+        <ThemeProvider theme={theme}>
+            <>
+                <GlobalStyle />
+                <div>
+                    <Switch>
+                        <Route exact path='/' component={Index} />
+                        <Route path='/options' component={Options} />
+                        <Route path='/details' component={Details} />
+                    </Switch>
+                </div>
+            </>
+        </ThemeProvider>
+    </Provider>
 );
 
 export default App;

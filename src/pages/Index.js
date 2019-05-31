@@ -4,7 +4,6 @@ import Layout from '../Layout';
 import Header from '../components/Header';
 import InputField from '../components/InputField';
 import Cities from '../views/Cities.js';
-import { isTerminatorless } from '@babel/types';
 
 class Index extends React.Component {
     constructor(props) {
