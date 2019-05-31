@@ -10,11 +10,19 @@ class Index extends React.Component {
         super(props);
         this.state = {
             city: '',
-            data: [],
+            data: JSON.parse(localStorage.getItem("cities")) || [],
         }
         this.getCityName = this.getCityName.bind(this);
+        this.deleteFromLocalStorage = this.deleteFromLocalStorage.bind(this);
     }
 
+   /*  componentDidMount() {
+        console.log()
+        this.setState({
+            data: []
+        })
+    }
+ */
     getCityName(name) {
         this.setState({
             city: name
@@ -29,7 +37,7 @@ class Index extends React.Component {
                     console.log(response);
                     this.setState({
                         data: [...data, this.processData(response.data)]
-                    });
+                    }, () => this.saveToLocalStorage());
                 })
                 .catch(err => {
                     console.log(err);
@@ -45,36 +53,38 @@ class Index extends React.Component {
         for (let i = 0; i < list.length; i++) {
             temperatureSum += list[i].main.temp;
         }
+        item.id = res.city.id;
         item.name = res.city.name;
         item.temperature = temperatureSum / list.length;
         item.lat = res.city.coord.lat;
         item.lon = res.city.coord.lon;
-        item.timezone = res.city.coord.timezone;
+        item.timezone = res.city.timezone;
 
-        console.log(item);
         return item;
     }
 
-    removeDiacritics(string) {
-        return string.replace(/ą/g, 'a').replace(/Ą/g, 'A')
-            .replace(/ć/g, 'c').replace(/Ć/g, 'C')
-            .replace(/ę/g, 'e').replace(/Ę/g, 'E')
-            .replace(/ł/g, 'l').replace(/Ł/g, 'L')
-            .replace(/ń/g, 'n').replace(/Ń/g, 'N')
-            .replace(/ó/g, 'o').replace(/Ó/g, 'O')
-            .replace(/ś/g, 's').replace(/Ś/g, 'S')
-            .replace(/ż/g, 'z').replace(/Ż/g, 'Z')
-            .replace(/ź/g, 'z').replace(/Ź/g, 'Z');
+    saveToLocalStorage() {
+        localStorage.setItem("cities", JSON.stringify(this.state.data));
+    }
+
+    deleteFromLocalStorage(id) {
+        let newState = this.state.data;
+        newState.splice(id, 1);
+        console.log('------', newState);
+        this.setState({
+            data: newState,
+        }, () => this.saveToLocalStorage() );
     }
 
     render() {
         const { data } = this.state;
+        console.log(data);
         return (
             <Layout>
                 <Header>
                     <InputField onSubmit={this.getCityName} />
                 </Header>
-                <Cities items={data} />
+                <Cities items={data} deleteCity={id => this.deleteFromLocalStorage(id)}/>
             </Layout>
         )
     }

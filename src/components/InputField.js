@@ -32,6 +32,7 @@ const InputField = ({onSubmit}) => {
     const handleSubmit = e => {
         e.preventDefault();
         onSubmit(inputVal);
+        setInputVal('');
     }
 
     return (

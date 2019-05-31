@@ -15,10 +15,13 @@ const StyledWrapper = styled.div`
     }
 `;
 
-const Cities = ({items}) => (
-    <StyledWrapper>
-        {items.map((item) => <City city={item} key={item.name}/>)}
-    </StyledWrapper>
-);
+const Cities = ({items, deleteCity}) => {
+    return (
+        <StyledWrapper>
+            {console.log(items)}
+            {items.map((item, i) => <City city={item} mapId={i} deleteItem={id => deleteCity(id)} key={item.name} />)}
+        </StyledWrapper>
+    );
+}
 
 export default Cities;

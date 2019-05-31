@@ -48,7 +48,7 @@ const City = ( props ) => {
             <H2> {props.city.name} </H2>
             <StyledTemperature> {temperature} </StyledTemperature>
             <StyledButtonsWrapper>
-                <Button dark> Usuń </Button>
+                <Button dark onClick={() => props.deleteItem(props.mapId)} > Usuń </Button>
                 <Button primary> Szczegóły </Button>
             </StyledButtonsWrapper>
         </StyledWrapper>
