@@ -18,7 +18,6 @@ const StyledWrapper = styled.div`
 const Cities = ({items, deleteCity}) => {
     return (
         <StyledWrapper>
-            {console.log(items)}
             {items.map((item, i) => <City city={item} mapId={i} deleteItem={id => deleteCity(id)} key={item.name} />)}
         </StyledWrapper>
     );

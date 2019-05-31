@@ -38,7 +38,6 @@ const StyledButtonsWrapper = styled.div`
 `;
 
 const City = ( props ) => {
-    console.log(props.celsiusDegrees);
     let temperature = props.celsiusDegrees ? 
     <span>{ (props.city.temperature - 273.15).toFixed(0)}°C</span> : 
     <span> {props.city.temperature.toFixed(0)}K </span>;
@@ -56,7 +55,6 @@ const City = ( props ) => {
 }
 
 function mapStateToProps(state) {
-    console.log(state.celsiusDegrees);
     return {
         celsiusDegrees: state.celsiusDegrees
     };
