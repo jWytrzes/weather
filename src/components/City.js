@@ -39,7 +39,7 @@ const StyledButtonsWrapper = styled.div`
 const City = ({city}) => (
     <StyledWrapper>
         <H2> {city.name} </H2>
-        <StyledTemperature> {city.temp}°C </StyledTemperature>
+        <StyledTemperature> {city.temperature.toFixed(0)} K </StyledTemperature>
         <StyledButtonsWrapper>
             <Button dark> Usuń </Button>
             <Button primary> Szczegóły </Button>

@@ -12,12 +12,11 @@ import { theme } from './assets/styles/theme';
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'INCREMENT'
+        case 'CHANGE'
     }
 }
 
-const store = createStore(reducer);
- */
+const store = createStore(reducer); */
 
 const App = () => ( 
     <ThemeProvider theme={theme}>

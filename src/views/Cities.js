@@ -11,6 +11,7 @@ const StyledWrapper = styled.div`
 
     ${({ theme }) => theme.mq.medium } {
         flex-direction: row;
+        flex-wrap: wrap;
     }
 `;
 

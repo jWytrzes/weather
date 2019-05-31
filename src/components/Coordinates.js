@@ -10,12 +10,12 @@ const H5 = styled.h5`
     margin: 0 0 10px;
 `;
 
-const StyledLabel = styled.label`
+/* const StyledLabel = styled.label`
     display: block;
     font-weight: 500;
     padding: 5px 0;
     cursor: pointer;
-`;
+`; */
 
 const Coordinates = () => (
     <StyledWrapper>
