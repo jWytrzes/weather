@@ -3,6 +3,7 @@ import axios from 'axios';
 import Layout from '../Layout';
 import Header from '../components/Header';
 import InputField from '../components/InputField';
+import Notification from '../components/Notification';
 import Cities from '../views/Cities.js';
 
 class Index extends React.Component {
@@ -11,6 +12,8 @@ class Index extends React.Component {
         this.state = {
             city: '',
             data: [],
+            showNotification: false,
+            notificationMessage: '',
         }
         this.getCityName = this.getCityName.bind(this);
         this.deleteFromLocalStorage = this.deleteFromLocalStorage.bind(this);
@@ -46,13 +49,40 @@ class Index extends React.Component {
         if (city && !data.some(e => e.name === city)) {
             axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=972589b46854cfc7c5e7b037031d4242`)
                 .then((response) => {
-                    this.setState({
-                        data: [...data, this.processData(response.data)]
-                    }, () => this.saveToLocalStorage());
+                    if(response.status === 200) {
+                        this.setState({
+                            data: [...data, this.processData(response.data)]
+                        }, () => this.saveToLocalStorage());
+                    }
                 })
                 .catch(err => {
                     console.log(err);
+                    this.setState({
+                        showNotification: true,
+                        notificationMessage: 'Wystąpił błąd. Upewnij się, że podana nazwa jest poprawna.'
+                    }, () => {
+                        setTimeout(() => {
+                            this.setState({
+                                showNotification: false,
+                                notificationMessage: ''
+                            })
+                        }, 1500)
+                    })
                 });
+        }
+
+        else if(city) {
+            this.setState({
+                showNotification: true,
+                notificationMessage: 'To miasto zostało dodane już wcześniej.'
+            }, () => {
+                setTimeout(() => {
+                    this.setState({
+                        showNotification: false,
+                        notificationMessage: ''
+                    })
+                }, 1500)
+            })
         }
     }
 
@@ -97,12 +127,13 @@ class Index extends React.Component {
     }
 
     render() {
-        const { data } = this.state;
+        const { data, showNotification, notificationMessage } = this.state;
         return (
             <Layout>
                 <Header>
                     <InputField onSubmit={this.getCityName} />
                 </Header>
+                { showNotification && <Notification> {notificationMessage} </Notification> }
                 <Cities items={data} deleteCity={id => this.deleteFromLocalStorage(id)}/>
             </Layout>
         )
