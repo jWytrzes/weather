@@ -37,11 +37,15 @@ const InputField = ({onSubmit}) => {
 
     return (
         <StyledWrapper id="searchInput" onSubmit={handleSubmit} >
-            <StyledInput 
-                type="text" 
-                placeholder="Dodaj miasto" 
+            <label htmlFor="cityInput" style={{width: '100%'}}>
+                <StyledInput
+                id="cityInput"
+                type="text"
+                placeholder="Dodaj miasto"
                 value={inputVal}
-                onChange={e => setInputVal(e.target.value)}/>
+                onChange={e => setInputVal(e.target.value)} />
+            </label>
+            
             <Button type="submit" form="searchInput"> Dodaj </Button>
         </StyledWrapper>
     );
