@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Button from './Button';
+import LinkButton from './LinkButton';
 
 const StyledWrapper = styled.div`
     display: flex;
@@ -40,7 +41,7 @@ const StyledButtonsWrapper = styled.div`
 const City = ( props ) => {
     let temperature = props.celsiusDegrees ? 
     <span>{ (props.city.temperature - 273.15).toFixed(0)}°C</span> : 
-    <span> {props.city.temperature.toFixed(0)}K </span>;
+        <span> {(props.city.temperature * 9/5 - 459.67).toFixed(0)}°F </span>;
 
     return (
         <StyledWrapper>
@@ -48,7 +49,14 @@ const City = ( props ) => {
             <StyledTemperature> {temperature} </StyledTemperature>
             <StyledButtonsWrapper>
                 <Button dark onClick={() => props.deleteItem(props.mapId)} > Usuń </Button>
-                <Button primary> Szczegóły </Button>
+                <LinkButton 
+                to={{ pathname: '/details', 
+                    state: {
+                        cityInfo: props.city,
+                    }
+                }}> 
+                    Szczegóły 
+                </LinkButton>
             </StyledButtonsWrapper>
         </StyledWrapper>
     );

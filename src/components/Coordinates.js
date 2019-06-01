@@ -17,15 +17,19 @@ const H5 = styled.h5`
     cursor: pointer;
 `; */
 
-const Coordinates = () => (
+const Coordinates = ({cityInfo}) => (
     <StyledWrapper>
         <H5> Długość geograficzna </H5>
         <p>
-           23.2345
+           {cityInfo.lon}
         </p>
         <H5> Szerokość geograficzna </H5>
         <p>
-            43.3365
+            {cityInfo.lat}
+        </p>
+        <H5> Strefa czasowa </H5>
+        <p>
+            {cityInfo.timezone}
         </p>
     </StyledWrapper>
 );

@@ -7,10 +7,10 @@ const StyledWrapper = styled.div`
     padding: 40px;
 `;
 
-const OptionsContainer = () => (
+const OptionsContainer = ({cityInfo}) => (
     <StyledWrapper>
         <BackButton> Powrót </BackButton>
-        <Coordinates />
+        <Coordinates cityInfo={cityInfo}/>
     </StyledWrapper>
 )
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 const StyledWrapper = styled.div`
     margin: 25px 0;
@@ -17,14 +18,29 @@ const StyledLabel = styled.label`
     cursor: pointer;
 `;
 
-const UnitOptions = () => (
-    <StyledWrapper>
-        <H5> Jednostka </H5>
-        <div>
-            <StyledLabel> <input type="radio" name="units" value="C" defaultChecked/> °C </StyledLabel>
-            <StyledLabel> <input type="radio" name="units" value="F"/> °F </StyledLabel>
-        </div>
-    </StyledWrapper>	
-);
+const UnitOptions = (props) => {
+    const radioChange = () => {
+        props.dispatch({ type: 'CHANGE_UNIT' });
+    }
 
-export default UnitOptions;
+    console.log(props.celsiusDegrees);
+
+    return (
+        <StyledWrapper>
+            <H5> Jednostka </H5>
+            <div>
+                <StyledLabel> <input type="radio" name="units" value="C" onChange={radioChange} checked={props.celsiusDegrees} /> °C </StyledLabel>
+                <StyledLabel> <input type="radio" name="units" value="F" onChange={radioChange} checked={!props.celsiusDegrees}/> °F </StyledLabel>
+            </div>
+        </StyledWrapper>
+    );
+}
+
+function mapStateToProps(state) {
+    return {
+        celsiusDegrees: state.celsiusDegrees
+    };
+}
+
+
+export default connect(mapStateToProps)(UnitOptions);
