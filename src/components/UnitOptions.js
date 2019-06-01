@@ -19,11 +19,10 @@ const StyledLabel = styled.label`
 `;
 
 const UnitOptions = (props) => {
-    const radioChange = () => {
+    const radioChange = (e) => {
+        localStorage.setItem('unit', e.target.value);
         props.dispatch({ type: 'CHANGE_UNIT' });
     }
-
-    console.log(props.celsiusDegrees);
 
     return (
         <StyledWrapper>

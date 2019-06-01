@@ -40,8 +40,8 @@ const StyledButtonsWrapper = styled.div`
 
 const City = ( props ) => {
     let temperature = props.celsiusDegrees ? 
-    <span>{ (props.city.temperature - 273.15).toFixed(0)}°C</span> : 
-        <span> {(props.city.temperature * 9/5 - 459.67).toFixed(0)}°F </span>;
+    <span>{ (props.city.temperature - 273.15).toFixed(1)}°C</span> : 
+        <span> {(props.city.temperature * 9/5 - 459.67).toFixed(1)}°F </span>;
 
     return (
         <StyledWrapper>

@@ -10,7 +10,7 @@ import Options from './pages/Options';
 import Details from './pages/Details';
 
 const initialState = {
-    celsiusDegrees: true,
+    celsiusDegrees: localStorage.getItem('unit')==='F' ? false : true,
 };
 
 const reducer = (state = initialState, action) => {
