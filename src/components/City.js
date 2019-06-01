@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Button from './Button';
 import LinkButton from './LinkButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const StyledWrapper = styled.div`
     display: flex;
@@ -48,7 +49,7 @@ const City = ( props ) => {
             <H2> {props.city.name} </H2>
             <StyledTemperature> {temperature} </StyledTemperature>
             <StyledButtonsWrapper>
-                <Button dark onClick={() => props.deleteItem(props.mapId)} > Usuń </Button>
+                <Button dark onClick={() => props.deleteItem(props.mapId)} > <FontAwesomeIcon icon="ban"/> Usuń </Button>
                 <LinkButton 
                 to={{ pathname: '/details', 
                     state: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const StyledWrapper = styled.div`
     width: 100%;
@@ -25,12 +26,19 @@ const StyledTopBar = styled.div`
     justify-content: space-between;
 `;
 
+const StyledLogo = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+`;
+
 const StyledLink = styled(Link)`
     text-decoration: none;
     color: inherit;
     padding: 8px 15px;
     border: 1px solid ${({ theme }) => theme.white};
     position: relative;
+    height: fit-content;
 
     ::after {
         content: "";
@@ -58,8 +66,13 @@ const StyledLink = styled(Link)`
 const Layout = ({children}) => (
     <StyledWrapper>
         <StyledTopBar>
-            <div> Weather<b>Forecast</b> </div>
-            <StyledLink to="/options"> Ustawienia </StyledLink>
+            <StyledLogo> 
+                <FontAwesomeIcon icon="cloud-sun-rain" style={{fontSize: '50px', marginRight: '10px'}}/>
+                <span>
+                    Weather <br/> <b> Forecast</b>
+                </span>
+            </StyledLogo>
+            <StyledLink to="/options"> <FontAwesomeIcon icon="cogs"/> Ustawienia </StyledLink>
         </StyledTopBar>
         <main>
             {children} 

@@ -8,6 +8,10 @@ import { Switch, Route } from 'react-router-dom';
 import Index from './pages/Index';
 import Options from './pages/Options';
 import Details from './pages/Details';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCogs, faBan, faCloudSunRain} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCogs, faBan, faCloudSunRain);
 
 const initialState = {
     celsiusDegrees: localStorage.getItem('unit')==='F' ? false : true,
