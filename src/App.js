@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import GlobalStyle from './assets/styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './assets/styles/theme';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Index from './pages/Index';
 import Options from './pages/Options';
 import Details from './pages/Details';
@@ -36,11 +36,11 @@ const App = () => (
             <>
                 <GlobalStyle />
                 <div>
-                    <Switch>
+                    <Router>
                         <Route exact path='/' component={Index} />
                         <Route path='/options' component={Options} />
                         <Route path='/details' component={Details} />
-                    </Switch>
+                    </Router>
                 </div>
             </>
         </ThemeProvider>

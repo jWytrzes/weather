@@ -28,8 +28,8 @@ const UnitOptions = (props) => {
         <StyledWrapper>
             <H5> Jednostka </H5>
             <div>
-                <StyledLabel for="cDeg"> <input type="radio" name="units" id="cDeg" value="C" onChange={radioChange} checked={props.celsiusDegrees} /> °C </StyledLabel>
-                <StyledLabel for="fDeg"> <input type="radio" name="units" id="fDeg" value="F" onChange={radioChange} checked={!props.celsiusDegrees}/> °F </StyledLabel>
+                <StyledLabel htmlFor="cDeg"> <input type="radio" name="units" id="cDeg" value="C" onChange={radioChange} checked={props.celsiusDegrees} /> °C </StyledLabel>
+                <StyledLabel htmlFor="fDeg"> <input type="radio" name="units" id="fDeg" value="F" onChange={radioChange} checked={!props.celsiusDegrees}/> °F </StyledLabel>
             </div>
         </StyledWrapper>
     );

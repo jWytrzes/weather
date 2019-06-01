@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Button from './Button';
 import LinkButton from './LinkButton';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Zoom from 'react-reveal/Zoom';
 
 const StyledWrapper = styled.div`
     display: flex;
@@ -45,21 +46,23 @@ const City = ( props ) => {
         <span> {(props.city.temperature * 9/5 - 459.67).toFixed(1)}°F </span>;
 
     return (
-        <StyledWrapper>
-            <H2> {props.city.name} </H2>
-            <StyledTemperature> {temperature} </StyledTemperature>
-            <StyledButtonsWrapper>
-                <Button dark onClick={() => props.deleteItem(props.mapId)} > <FontAwesomeIcon icon="ban"/> Usuń </Button>
-                <LinkButton 
-                to={{ pathname: '/details', 
-                    state: {
-                        cityInfo: props.city,
-                    }
-                }}> 
-                    Szczegóły 
-                </LinkButton>
-            </StyledButtonsWrapper>
-        </StyledWrapper>
+        <Zoom duration={250}>
+            <StyledWrapper>
+                <H2> {props.city.name} </H2>
+                <StyledTemperature> {temperature} </StyledTemperature>
+                <StyledButtonsWrapper>
+                    <Button dark onClick={() => props.deleteItem(props.mapId)} > <FontAwesomeIcon icon="ban"/> Usuń </Button>
+                    <LinkButton 
+                    to={{ pathname: '/details', 
+                        state: {
+                            cityInfo: props.city,
+                        }
+                    }}> 
+                        Szczegóły 
+                    </LinkButton>
+                </StyledButtonsWrapper>
+            </StyledWrapper>
+        </Zoom>
     );
 }
 

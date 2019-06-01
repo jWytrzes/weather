@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const StyledButton = styled(Link)`
+const StyledButton = styled.button`
     text-decoration: none;
     font-family: inherit;
     padding: 8px 15px;
@@ -39,11 +39,17 @@ const StyledButton = styled(Link)`
     }
 `;
 
-const Button = (props) => (
-    <StyledButton {...props} to="/">
-        {'<'}
-        {props.children}
-    </StyledButton>
-) 
+const BackButton = (props) => {
+    const goBack = () => {
+        props.history.goBack();
+    }
 
-export default Button;
+    return (
+        <StyledButton {...props} onClick={goBack}>
+            {'<'}
+            {props.children}
+        </StyledButton>
+    ) 
+}
+
+export default withRouter(BackButton);
