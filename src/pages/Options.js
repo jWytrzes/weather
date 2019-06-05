@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import OptionsContainer from '../views/OptionsContainer';
 
 const Options = () => (
-    <Layout>
+    <Layout optionsButtonDisabled>
         <Header>
             <h2> Ustawienia </h2>
         </Header>

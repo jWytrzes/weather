@@ -12,6 +12,7 @@ const Notification = styled.div`
     text-align: center;
     padding: 5px 15px;
     border-radius: 15px;
+    z-index: 9999;
 
     ${({ theme }) => theme.mq.medium} {
         background: ${({theme }) => theme.grey};

@@ -39,6 +39,7 @@ const StyledLink = styled(Link)`
     border: 1px solid ${({ theme }) => theme.white};
     position: relative;
     height: fit-content;
+    pointer-events: ${({ disable }) => disable ? 'none' : 'unset'};
 
     ::after {
         content: "";
@@ -63,7 +64,7 @@ const StyledLink = styled(Link)`
     }
 `;
 
-const Layout = ({children}) => (
+const Layout = ({children, optionsButtonDisabled}) => (
     <StyledWrapper>
         <StyledTopBar>
             <StyledLogo> 
@@ -72,7 +73,7 @@ const Layout = ({children}) => (
                     Weather <br/> <b> Forecast</b>
                 </span>
             </StyledLogo>
-            <StyledLink to="/options"> <FontAwesomeIcon icon="cogs"/> Ustawienia </StyledLink>
+            <StyledLink to="/options" disable={optionsButtonDisabled}> <FontAwesomeIcon icon="cogs"/> Ustawienia </StyledLink>
         </StyledTopBar>
         <main>
             {children} 
