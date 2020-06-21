@@ -2,6 +2,8 @@
 
 This is a simple ReactJS application that displays the average forecasted temperature, calculated from the next five days for the given city. There are also options for showing city details, deleting it from the list and switching units between Celsius and Farenheit. List of cities and choosen settings are stored in local storage. Application uses [Open Weather API](https://openweathermap.org/)
 
+[Live preview](https://quizzical-wright-e55e26.netlify.app/)
+
 ## Running the app
 
 After cloning the repository run:
